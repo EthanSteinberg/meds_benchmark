@@ -1,11 +1,12 @@
 import datasets
 import collections
 import time
+import sys
 
 code_counts = collections.defaultdict(int)
 
 start = time.time()
-data = datasets.Dataset.from_parquet("mimic_demo/data/*")
+data = datasets.Dataset.from_parquet("mimic_demo" + sys.argv[1] + "/data/*")
 
 for patient in data:
         events = []

@@ -2,9 +2,12 @@ import subprocess
 import csv
 import time
 
+postfix = '_moved_disk'
 
 def run_and_time(program_name):
-    p = subprocess.run(["python", program_name + ".py"], capture_output=True, text=True)
+    p = subprocess.run(["python", program_name + ".py", postfix], capture_output=True, text=True)
+    if p.stderr:
+        print(p.stderr)
     return float(p.stdout)
 
 num_trials = 30
